@@ -21,12 +21,16 @@ services:
     container_name: app
     restart: always
     tty: true
+    working_dir: /usr/src/app
+    volumes:
+      - ./node:/usr/src/app
     depends_on:
       - db
     networks:
       - node-network
     ports:
       - "3000:3000"
+    command: bash bootstrap.sh
   
   db:
     image: mysql:5.7
