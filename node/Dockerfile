@@ -8,8 +8,8 @@ RUN wget https://github.com/jwilder/dockerize/releases/download/v0.6.1/dockerize
 
 COPY . .
 
-CMD dockerize -wait tcp://db:3306 -timeout 1m npm start
+ENTRYPOINT dockerize -wait tcp://db:3306 -timeout 1m npm start
 
-ENTRYPOINT [ "bash", "bootstrap.sh" ]
+CMD [ "bash", "bootstrap.sh" ]
 
 EXPOSE 3000
